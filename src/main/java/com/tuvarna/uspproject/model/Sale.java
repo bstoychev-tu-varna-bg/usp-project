@@ -32,4 +32,16 @@ public final class Sale {
 
     public Sale() {
     }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }

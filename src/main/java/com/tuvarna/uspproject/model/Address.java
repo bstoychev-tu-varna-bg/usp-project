@@ -3,6 +3,8 @@ package com.tuvarna.uspproject.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
@@ -14,15 +16,25 @@ public final class Address {
     @Column(name = "id", columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @Pattern(regexp = "^[A-Z][a-z]+(?:[\\s-][a-zA-Z]+)*$", message = "{address.city.invalid.regexp}")
+    @Size(max = 25, min = 3, message = "{address.city.invalid.size}")
     @Column(name = "city", nullable = false)
     private String city;
 
+    @Pattern(regexp = "^[A-Z][a-z]+(?:[\\s-][a-zA-Z]+)*(\\d*)$", message = "{address.street.invalid.regexp}")
+    @Size(max = 25, min = 3, message = "{address.street.invalid.size}")
     @Column(name = "street", nullable = false)
     private String street;
 
-    @OneToOne(mappedBy = "address")
+    //@OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
     private Client client;
 
     public Address() {
+    }
+
+    @Override
+    public String toString() {
+        return city + ", " + street;
     }
 }

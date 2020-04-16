@@ -3,6 +3,7 @@ package com.tuvarna.uspproject.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ public final class Model {
     @Column(name = "id", columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @NotBlank(message = "{model.name.invalid.notBlank}")
     @Column(name = "name", nullable = false)
     private String name;
 

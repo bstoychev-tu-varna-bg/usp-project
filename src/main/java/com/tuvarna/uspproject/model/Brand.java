@@ -1,5 +1,6 @@
 package com.tuvarna.uspproject.model;
 
+import com.tuvarna.uspproject.annotation.BrandNameConstraint;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public final class Brand {
     @Column(name = "id", columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @BrandNameConstraint
     @Column(name = "name", nullable = false)
     private String name;
 
