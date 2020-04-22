@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add car</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Navigation-->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- Form add car -->
+<form class="text-center border border-light p-5" th:action="@{/cars/add}" th:object="${car}" method="post">
+
+    <p class="h4 mb-4">Add car</p>
+
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- Brand name -->
+            <input type="text" id="brandName" class="form-control" placeholder="Brand name" th:field="*{model.brand.name}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('model.brand.name')}" th:errors="*{model.brand.name}"></div>
+        </div>
+        <div class="col">
+            <!-- Model name -->
+            <input type="text" id="modelName" class="form-control" placeholder="Model name" th:field="*{model.name}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('model.name')}" th:errors="*{model.name}"></div>
+        </div>
+    </div>
+
+    <!-- Year of manufacture -->
+    <input type="text" id="yearOfManufacture" class="form-control mb-4" placeholder="Year of manufacturing" th:field="*{yearOfProduction}">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('yearOfProduction')}" th:errors="*{yearOfProduction}"></div>
+
+    <!-- Distance traveled-->
+    <input type="text" id="carDistanceTraveled" class="form-control mb-4" placeholder="Distance traveled" th:field="*{distanceTraveled}">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('distanceTraveled')}" th:errors="*{distanceTraveled}"></div>
+
+    <!-- Color -->
+    <input type="text" id="carColor" class="form-control mb-4" placeholder="Color" th:field="*{color}">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></div>
+
+    <!-- Price -->
+    <input type="text" id="carPrice" class="form-control mb-4" placeholder="Price" th:field="*{price}">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+
+    <!-- Add button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Add</button>
+
+</form>
+<!-- Form add car -->
+
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+
+</body>
+</html>
