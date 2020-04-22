@@ -17,12 +17,20 @@ public final class Brand {
     private UUID id;
 
     @BrandNameConstraint
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private List<Model> models;
 
     public Brand() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

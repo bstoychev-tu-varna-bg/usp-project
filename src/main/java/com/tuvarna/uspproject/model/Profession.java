@@ -23,7 +23,7 @@ public final class Profession {
 
     @Min(value = 560, message = "{profession.salary.invalid.min}")
     @Column(name = "salary", nullable = false)
-    private int salary;
+    private Integer salary;
 
     @OneToMany(mappedBy = "profession", cascade = CascadeType.ALL)
     private List<Employee> employees;
