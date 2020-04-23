@@ -1,9 +1,9 @@
 package com.tuvarna.uspproject.model;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.UUID;
 
@@ -36,7 +36,7 @@ public final class Car {
     @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private Sale sale;
 
-    //@ManyToOne(cascade = CascadeType.ALL)
+    @Valid
     @ManyToOne
     @JoinColumn(name = "model_id", nullable = false)
     private Model model;

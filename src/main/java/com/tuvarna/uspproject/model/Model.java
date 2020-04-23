@@ -1,8 +1,10 @@
 package com.tuvarna.uspproject.model;
 
+import com.tuvarna.uspproject.annotation.ModelNameConstraint;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.UUID;
@@ -16,11 +18,12 @@ public final class Model {
     @Column(name = "id", columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @ModelNameConstraint
     @NotBlank(message = "{model.name.invalid.notBlank}")
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    //@ManyToOne(cascade = CascadeType.ALL)
+    @Valid
     @ManyToOne
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
