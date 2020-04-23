@@ -27,23 +27,32 @@
     <div class="form-row mb-4">
         <div class="col">
             <!-- Brand name -->
-            <input type="text" id="brandName" class="form-control" placeholder="Brand name" th:field="*{model.brand.name}">
-            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('model.brand.name')}" th:errors="*{model.brand.name}"></div>
+            <select id="brand-choice" class="browser-default custom-select" th:field="*{model.brand.name}">
+                <option value="base" selected>Please choose a brand</option>
+                <option th:value="Mercedes-Benz" th:text="Mercedes-Benz"></option>
+                <option th:value="Audi" th:text="Audi"></option>
+                <option th:value="BMW" th:text="BMW"></option>
+                <option th:value="Renault" th:text="Renault"></option>
+                <option th:value="Peugeot" th:text="Peugeot"></option>
+                <option th:value="Citroen" th:text="Citroen"></option>
+            </select>
+
         </div>
         <div class="col">
             <!-- Model name -->
-            <input type="text" id="modelName" class="form-control" placeholder="Model name" th:field="*{model.name}">
-            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('model.name')}" th:errors="*{model.name}"></div>
+            <select id="model-choice" class="browser-default custom-select" th:field="*{model.name}">
+                <option value="base" selected>Please choose a brand</option>
+            </select>
         </div>
     </div>
 
     <!-- Year of manufacture -->
     <input type="text" id="yearOfManufacture" class="form-control mb-4" placeholder="Year of manufacturing" th:field="*{yearOfProduction}">
-    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('yearOfProduction')}" th:errors="*{yearOfProduction}"></div>
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('yearOfProduction')}">Year must be greater than 1920 and less than 2021!</div>
 
     <!-- Distance traveled-->
     <input type="text" id="carDistanceTraveled" class="form-control mb-4" placeholder="Distance traveled" th:field="*{distanceTraveled}">
-    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('distanceTraveled')}" th:errors="*{distanceTraveled}"></div>
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('distanceTraveled')}">Traveled distance must be positive!</div>
 
     <!-- Color -->
     <input type="text" id="carColor" class="form-control mb-4" placeholder="Color" th:field="*{color}">
@@ -51,7 +60,7 @@
 
     <!-- Price -->
     <input type="text" id="carPrice" class="form-control mb-4" placeholder="Price" th:field="*{price}">
-    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+    <div class="alert alert-danger" id="priceError" role="alert" th:if="${#fields.hasErrors('price')}">Price must be greater than 680!</div>
 
     <!-- Add button -->
     <button class="btn btn-info my-4 btn-block" type="submit">Add</button>
@@ -68,6 +77,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="/js/carDynamicDropdowns.js"></script>
 
 </body>
 </html>
