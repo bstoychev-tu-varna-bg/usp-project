@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ public final class Profession {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @NotNull
     @Min(value = 560, message = "{profession.salary.invalid.min}")
     @Column(name = "salary", nullable = false)
     private Integer salary;
@@ -29,5 +31,29 @@ public final class Profession {
     private List<Employee> employees;
 
     public Profession() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

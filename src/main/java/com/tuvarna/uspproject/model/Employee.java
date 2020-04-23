@@ -41,4 +41,44 @@ public final class Employee {
     public UUID getId() {
         return id;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
+    }
 }

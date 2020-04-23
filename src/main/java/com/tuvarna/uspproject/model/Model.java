@@ -20,12 +20,10 @@ public final class Model {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    //@ManyToOne(cascade = CascadeType.ALL)
     @ManyToOne
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 
-    //@OneToMany(mappedBy = "model")
     @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
     private List<Car> cars;
 
