@@ -28,7 +28,6 @@ public final class Model {
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 
-    //@OneToMany(mappedBy = "model")
     @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
     private List<Car> cars;
 

@@ -16,16 +16,19 @@ public final class Car {
     @Column(name = "id", columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @Min(value = 1920, message = "{car.yearOfProduction.invalid.min}")
-    @Max(value = 2020, message = "{car.yearOfProduction.invalid.max}")
+    @NotNull(message = "{number.invalid.notNull}")
+    @Min(value = 1920)
+    @Max(value = 2020)
     @Column(name = "date", nullable = false)
     private Integer yearOfProduction;
 
-    @Positive(message = "{car.distanceTraveled.invalid.positive}")
+    @NotNull(message = "{number.invalid.notNull}")
+    @Positive
     @Column(name = "distance_traveled", nullable = false)
     private Integer distanceTraveled;
 
-    @Min(value = 600, message = "{car.price.invalid.min}")
+    @NotNull(message = "{number.invalid.notNull}")
+    @Min(value = 600)
     @Column(name = "price", nullable = false)
     private Double price;
 
