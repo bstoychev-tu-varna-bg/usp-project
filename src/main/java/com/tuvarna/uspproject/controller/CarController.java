@@ -48,7 +48,7 @@ public final class CarController {
 
     @PostMapping("/add")
     protected ModelAndView processAddCar(@Valid @ModelAttribute("car") Car car, BindingResult bindingResult, ModelAndView modelAndView) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             modelAndView.setViewName("add-car");
             return modelAndView;
         }
@@ -65,7 +65,7 @@ public final class CarController {
     }
 
     protected ModelAndView processEditCar(@Valid @ModelAttribute("car") Car car, BindingResult bindingResult, ModelAndView modelAndView) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             modelAndView.setViewName("edit-car");
             return modelAndView;
         }

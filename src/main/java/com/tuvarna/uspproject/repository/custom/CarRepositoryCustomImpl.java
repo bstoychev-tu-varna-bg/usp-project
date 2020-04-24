@@ -10,6 +10,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * TODO: WORKING PROGRESS...
+ */
 public final class CarRepositoryCustomImpl implements CarRepositoryCustom {
 
     @PersistenceContext

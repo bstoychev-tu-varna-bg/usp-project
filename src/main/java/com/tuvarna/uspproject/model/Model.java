@@ -57,4 +57,12 @@ public final class Model {
     public void setBrand(Brand brand) {
         this.brand = brand;
     }
+
+    @Override
+    public String toString() {
+        return "Model{" +
+                "name='" + name + '\'' +
+                ", brand=" + brand +
+                '}';
+    }
 }

@@ -3,6 +3,7 @@ package com.tuvarna.uspproject.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.UUID;
@@ -29,8 +30,7 @@ public final class Client {
     @Column(name = "telephone_number", nullable = false)
     private String telephoneNumber;
 
-    //@OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
+    @Valid
     @OneToOne
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;

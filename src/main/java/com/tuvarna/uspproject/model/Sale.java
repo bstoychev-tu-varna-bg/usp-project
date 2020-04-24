@@ -3,6 +3,7 @@ package com.tuvarna.uspproject.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.UUID;
 
@@ -18,10 +19,12 @@ public final class Sale {
     @Column(name = "date", nullable = false)
     private Date date;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;

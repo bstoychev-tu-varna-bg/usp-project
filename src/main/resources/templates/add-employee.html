@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add client</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Navigation-->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- Form add employee -->
+<form class="text-center border border-light p-5" th:action="@{/employees/add}" th:object="${employee}" method="post">
+
+    <p class="h4 mb-4">Add employee</p>
+
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- First name -->
+            <input type="text" id="firstName" class="form-control" placeholder="First name"
+                   th:field="*{firstName}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('firstName')}"
+                 th:errors="*{firstName}"></div>
+        </div>
+        <div class="col">
+            <!-- Last name -->
+            <input type="text" id="lastName" class="form-control" placeholder="Last name"
+                   th:field="*{lastName}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('lastName')}"
+                 th:errors="*{lastName}"></div>
+        </div>
+    </div>
+
+    <!-- Telephone number -->
+    <input type="text" id="telephoneNumber" class="form-control mb-4" placeholder="Telephone number"
+           th:field="*{telephoneNumber}">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('telephoneNumber')}"
+         th:errors="*{telephoneNumber}"></div>
+
+    <!-- Profession -->
+    <div class="form-row mb-4">
+        <div class="col">
+            <select th:field="*{profession.name}" class="custom-select custom-select-sm">
+                <option selected value="Choose a profession">Choose a profession</option>
+                <option value="Salesman" th:value="Salesman">Salesman</option>
+                <option value="Manager" th:value="Manager">Manager</option>
+                <option value="Something" th:value="Something">Something</option>
+            </select>
+        </div>
+        <div class="col">
+            <select th:field="*{profession.salary}" class="custom-select custom-select-sm">
+                <option selected value="Choose a salary">Choose a salary</option>
+                <option value="1000" th:value="1000">1000</option>
+                <option value="1500" th:value="1500">1500</option>
+                <option value="2000" th:value="2000">2000</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Add button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Add</button>
+
+</form>
+<!-- Form add employee -->
+
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+
+</body>
+</html>

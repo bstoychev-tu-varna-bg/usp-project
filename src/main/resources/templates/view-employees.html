@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cars</title>
+    <title>Clients</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -12,7 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
-    <!-- MDBootstrap Datatables  -->
+    <!-- MDBootstrap Data tables  -->
     <link href="/css/datatables2.min.css" rel="stylesheet">
 
 </head>
@@ -22,38 +22,35 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 
 
-<table id="dataTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+<table id="dataTable" class="table table-striped table-bordered table-sm">
     <thead>
     <tr>
-        <th class="th-sm">Brand</th>
-        <th class="th-sm">Model</th>
-        <th class="th-sm">Year of manufacturing</th>
-        <th class="th-sm">Distance traveled</th>
-        <th class="th-sm">Color</th>
-        <th class="th-sm">Price</th>
+        <th class="th-sm" style="text-align: center">First Name</th>
+        <th class="th-sm" style="text-align: center">Last Name</th>
+        <th class="th-sm" style="text-align: center">Telephone Number</th>
+        <th class="th-sm" style="text-align: center">Profession</th>
+        <th class="th-sm" style="text-align: center">Salary</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${cars.isEmpty()}">
-        <td colspan="6"> No Cars Available</td>
+    <tr th:if="${employees.isEmpty()}">
+        <td colspan="6"> No Employees Available</td>
     </tr>
-    <tr th:each="car : ${cars}">
-        <td th:text="${car.model.brand.name}"></td>
-        <td th:text="${car.model.name}"></td>
-        <td th:text="${car.yearOfProduction}"></td>
-        <td th:text="${car.distanceTraveled}"></td>
-        <td th:text="${car.color}"></td>
-        <td th:text="${car.price}"></td>
+    <tr th:each="employee : ${employees}">
+        <td style="text-align: center" th:text="${employee.firstName}"></td>
+        <td style="text-align: center" th:text="${employee.lastName}"></td>
+        <td style="text-align: center" th:text="${employee.telephoneNumber}"></td>
+        <td style="text-align: center" th:text="${employee.profession.name}"></td>
+        <td style="text-align: center" th:text="${employee.profession.salary}"></td>
     </tr>
     </tbody>
     <tfoot>
     <tr>
-        <th>Brand</th>
-        <th>Model</th>
-        <th>Year of manufacturing</th>
-        <th>Distance traveled</th>
-        <th>Color</th>
-        <th>Price</th>
+        <th style="text-align: center">First Name</th>
+        <th style="text-align: center">Last Name</th>
+        <th style="text-align: center">Telephone Number</th>
+        <th style="text-align: center">Profession</th>
+        <th style="text-align: center">Salary</th>
     </tr>
     </tfoot>
 </table>
@@ -70,12 +67,12 @@
 
 <!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="/js/datatables2.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('#dataTable').DataTable();
         $('.dataTables_length').addClass('bs-select');
     });
 </script>
-
 </body>
 </html>

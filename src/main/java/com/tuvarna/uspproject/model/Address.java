@@ -26,7 +26,6 @@ public final class Address {
     @Column(name = "street", nullable = false)
     private String street;
 
-    //@OneToOne(mappedBy = "address")
     @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
     private Client client;
 

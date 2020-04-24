@@ -27,14 +27,14 @@ public final class EmployeeController {
     }
 
     @GetMapping("/add")
-    protected ModelAndView addEmployee(ModelAndView modelAndView){
+    protected ModelAndView addEmployee(ModelAndView modelAndView) {
         modelAndView.addObject("employee", new Employee()).setViewName("add-employee");
         return modelAndView;
     }
 
     @PostMapping("/add")
     protected ModelAndView processAddEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult, ModelAndView modelAndView) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             modelAndView.setViewName("add-employee");
             return modelAndView;
         }
@@ -51,7 +51,7 @@ public final class EmployeeController {
     }
 
     protected ModelAndView processEditEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult, ModelAndView modelAndView) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             modelAndView.setViewName("edit-employee");
             return modelAndView;
         }

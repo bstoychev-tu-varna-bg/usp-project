@@ -56,4 +56,12 @@ public final class Profession {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
+    @Override
+    public String toString() {
+        return "Profession{" +
+                "name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }

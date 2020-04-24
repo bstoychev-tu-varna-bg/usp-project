@@ -83,4 +83,14 @@ public final class Employee {
     public void setSales(List<Sale> sales) {
         this.sales = sales;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", profession=" + profession +
+                '}';
+    }
 }

@@ -95,4 +95,14 @@ public final class Car {
     public void setModel(Model model) {
         this.model = model;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "yearOfProduction=" + yearOfProduction +
+                ", price=" + price +
+                ", color='" + color + '\'' +
+                ", model=" + model +
+                '}';
+    }
 }

@@ -28,14 +28,14 @@ public final class ClientController {
 
     @GetMapping("/add")
     protected ModelAndView addClient(ModelAndView modelAndView) {
-        modelAndView.addObject("client", new Client()).setViewName("add-client");
+        modelAndView.addObject("client", new Client()).setViewName("add-employee");
         return modelAndView;
     }
 
     @PostMapping("/add")
     protected ModelAndView processAddClient(@Valid @ModelAttribute("client") Client client, BindingResult bindingResult, ModelAndView modelAndView) {
         if(bindingResult.hasErrors()) {
-            modelAndView.setViewName("add-client");
+            modelAndView.setViewName("add-employee");
             return modelAndView;
         }
         clientService.save(client);
