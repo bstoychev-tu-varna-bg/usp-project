@@ -3,6 +3,7 @@ package com.tuvarna.uspproject.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.UUID;
@@ -28,6 +29,7 @@ public final class Employee {
     @Column(name = "telephone_number", nullable = false)
     private String telephoneNumber;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profession_id", nullable = false)
     private Profession profession;

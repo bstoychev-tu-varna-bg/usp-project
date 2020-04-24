@@ -22,7 +22,7 @@ public final class Profession {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
+    @NotNull(message = "{number.invalid.notNull}")
     @Min(value = 560, message = "{profession.salary.invalid.min}")
     @Column(name = "salary", nullable = false)
     private Integer salary;

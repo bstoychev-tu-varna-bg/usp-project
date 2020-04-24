@@ -1,9 +1,9 @@
 package com.tuvarna.uspproject.model;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.UUID;
 
@@ -16,19 +16,19 @@ public final class Car {
     @Column(name = "id", columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @NotNull
-    @Min(value = 1920, message = "{car.yearOfProduction.invalid.min}")
-    @Max(value = 2020, message = "{car.yearOfProduction.invalid.max}")
+    @NotNull(message = "{number.invalid.notNull}")
+    @Min(value = 1920)
+    @Max(value = 2020)
     @Column(name = "date", nullable = false)
     private Integer yearOfProduction;
 
-    @NotNull
-    @Positive(message = "{car.distanceTraveled.invalid.positive}")
+    @NotNull(message = "{number.invalid.notNull}")
+    @Positive
     @Column(name = "distance_traveled", nullable = false)
     private Integer distanceTraveled;
 
-    @NotNull
-    @Min(value = 600, message = "{car.price.invalid.min}")
+    @NotNull(message = "{number.invalid.notNull}")
+    @Min(value = 600)
     @Column(name = "price", nullable = false)
     private Double price;
 
@@ -39,6 +39,7 @@ public final class Car {
     @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private Sale sale;
 
+    @Valid
     @ManyToOne
     @JoinColumn(name = "model_id", nullable = false)
     private Model model;
