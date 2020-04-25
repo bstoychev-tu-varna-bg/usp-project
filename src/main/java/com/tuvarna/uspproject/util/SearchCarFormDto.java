@@ -29,6 +29,9 @@ public final class SearchCarFormDto {
             if(values.length == 1){
                 it.remove();
             }
+            else if(values[1].equals("base")){
+                it.remove();
+            }
         }
     }
 }
