@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/employees")
@@ -39,23 +38,6 @@ public final class EmployeeController {
             return modelAndView;
         }
         employeeService.save(employee);
-        modelAndView.setViewName("redirect:/employees");
-        return modelAndView;
-    }
-
-    @GetMapping("/edit/{id}")
-    protected ModelAndView editEmployee(@PathVariable("id") UUID id, ModelAndView modelAndView) {
-        Employee employee = employeeService.findById(id);
-        modelAndView.addObject("employee", employee).setViewName("edit-employee");
-        return modelAndView;
-    }
-
-    protected ModelAndView processEditEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult, ModelAndView modelAndView) {
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("edit-employee");
-            return modelAndView;
-        }
-        employeeService.update(employee);
         modelAndView.setViewName("redirect:/employees");
         return modelAndView;
     }

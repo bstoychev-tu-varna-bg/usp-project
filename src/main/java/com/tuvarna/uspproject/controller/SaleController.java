@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/sales")
@@ -62,23 +61,6 @@ public final class SaleController {
             return modelAndView;
         }
         saleService.save(sale);
-        modelAndView.setViewName("redirect:/sales");
-        return modelAndView;
-    }
-
-    @GetMapping("/edit/{id}")
-    protected ModelAndView editSale(@PathVariable("id") UUID id, ModelAndView modelAndView) {
-        Sale sale = saleService.findById(id);
-        modelAndView.addObject("sale", sale).setViewName("edit-sale");
-        return modelAndView;
-    }
-
-    protected ModelAndView processEditSale(@Valid @ModelAttribute("sale") Sale sale, BindingResult bindingResult, ModelAndView modelAndView) {
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("edit-sale");
-            return modelAndView;
-        }
-        saleService.update(sale);
         modelAndView.setViewName("redirect:/sales");
         return modelAndView;
     }

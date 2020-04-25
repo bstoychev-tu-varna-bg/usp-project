@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/cars")
@@ -54,23 +52,6 @@ public final class CarController {
             return modelAndView;
         }
         carService.save(car);
-        modelAndView.setViewName("redirect:/cars");
-        return modelAndView;
-    }
-
-    @GetMapping("/edit/{id}")
-    protected ModelAndView editCar(@PathVariable("id") UUID id, ModelAndView modelAndView) {
-        Car car = carService.findById(id);
-        modelAndView.addObject("car", car).setViewName("edit-car");
-        return modelAndView;
-    }
-
-    protected ModelAndView processEditCar(@Valid @ModelAttribute("car") Car car, BindingResult bindingResult, ModelAndView modelAndView) {
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("edit-car");
-            return modelAndView;
-        }
-        carService.update(car);
         modelAndView.setViewName("redirect:/cars");
         return modelAndView;
     }

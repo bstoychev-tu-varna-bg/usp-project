@@ -7,7 +7,5 @@ import java.util.UUID;
 
 public interface SaleService {
     void save(Sale sale);
-    void update(Sale sale);
-    Sale findById(UUID id);
     Collection<Sale> findAll();
 }
