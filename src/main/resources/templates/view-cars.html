@@ -34,7 +34,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${cars.isEmpty()}">
+    <tr th:if="${cars==null || cars.isEmpty()}">
         <td colspan="6"> No Cars Available</td>
     </tr>
     <tr th:each="car : ${cars}">

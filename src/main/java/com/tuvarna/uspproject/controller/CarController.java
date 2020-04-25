@@ -2,6 +2,7 @@ package com.tuvarna.uspproject.controller;
 
 import com.tuvarna.uspproject.model.Car;
 import com.tuvarna.uspproject.service.api.CarService;
+import com.tuvarna.uspproject.util.SearchCarFormDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -29,13 +30,13 @@ public final class CarController {
 
     @GetMapping("/search")
     protected ModelAndView findCarsByCriteria(ModelAndView modelAndView) {
-        modelAndView.addObject("criteria", new ArrayList<String>()).setViewName("search-car");
+        modelAndView.addObject("searchCarForm", new SearchCarFormDto()).setViewName("search-car");
         return modelAndView;
     }
 
-    @GetMapping("/search-created")
-    protected ModelAndView processFindCarsByCriteria(@ModelAttribute("criteria") Collection<String> criteria, ModelAndView modelAndView) {
-        Collection<Car> cars = carService.findByCriteria(criteria);
+    @PostMapping("/search")
+    protected ModelAndView processFindCarsByCriteria(@ModelAttribute("searchCarForm") SearchCarFormDto searchCarFormDto, ModelAndView modelAndView) {
+        Collection<Car> cars = carService.findByCriteria(searchCarFormDto.getProcessedCriteria());
         modelAndView.addObject("cars", cars).setViewName("view-cars");
         return modelAndView;
     }

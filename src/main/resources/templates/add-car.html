@@ -36,13 +36,15 @@
                 <option th:value="Peugeot" th:text="Peugeot"></option>
                 <option th:value="Citroen" th:text="Citroen"></option>
             </select>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('model.brand.name')}" th:errors="*{model.brand.name}"></div>
 
         </div>
         <div class="col">
             <!-- Model name -->
             <select id="model-choice" class="browser-default custom-select" th:field="*{model.name}">
-                <option value="base" selected>Please choose a brand</option>
+                <option value="base" selected>Please choose a model</option>
             </select>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('model.name')}" th:errors="*{model.name}"></div>
         </div>
     </div>
 
