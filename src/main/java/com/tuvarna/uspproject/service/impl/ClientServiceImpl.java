@@ -1,6 +1,5 @@
 package com.tuvarna.uspproject.service.impl;
 
-import com.tuvarna.uspproject.exception.NotExistingClientException;
 import com.tuvarna.uspproject.model.Address;
 import com.tuvarna.uspproject.model.Client;
 import com.tuvarna.uspproject.repository.ClientRepository;
@@ -27,20 +26,6 @@ public final class ClientServiceImpl implements ClientService {
         client.setAddress(address);
         clientRepository.save(client);
         return client;
-    }
-
-    @Override
-    public void update(Client client) {
-        if (isExistingClient(client))
-            clientRepository.save(client);
-        else
-            throw new NotExistingClientException("Client doesn't exist!");
-    }
-
-    @Override
-    public Client findById(UUID id) {
-        return clientRepository.findById(id).orElseThrow(() ->
-                new NotExistingClientException("Client doesn't exist"));
     }
 
     @Override

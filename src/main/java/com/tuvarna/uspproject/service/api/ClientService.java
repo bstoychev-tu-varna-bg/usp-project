@@ -7,7 +7,5 @@ import java.util.UUID;
 
 public interface ClientService {
     Client save(Client client);
-    void update(Client client);
-    Client findById(UUID id);
     Collection<Client> findAll();
 }

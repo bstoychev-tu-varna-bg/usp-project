@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/clients")
@@ -39,23 +38,6 @@ public final class ClientController {
             return modelAndView;
         }
         clientService.save(client);
-        modelAndView.setViewName("redirect:/clients");
-        return modelAndView;
-    }
-
-    @GetMapping("/edit/{id}")
-    protected ModelAndView editClient(@PathVariable("id") UUID id, ModelAndView modelAndView) {
-        Client client = clientService.findById(id);
-        modelAndView.addObject("client", client).setViewName("edit-client");
-        return modelAndView;
-    }
-
-    protected ModelAndView processEditClient(@Valid @ModelAttribute("client") Client client, BindingResult bindingResult, ModelAndView modelAndView) {
-        if(bindingResult.hasErrors()) {
-            modelAndView.setViewName("edit-client");
-            return modelAndView;
-        }
-        clientService.update(client);
         modelAndView.setViewName("redirect:/clients");
         return modelAndView;
     }
