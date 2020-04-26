@@ -29,6 +29,7 @@ public final class Sale {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
+    @Valid
     @OneToOne
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;

@@ -22,9 +22,9 @@ $("#brand-choice").change(function() {
 
 $('#searchCar').submit(function() {
     var yearOfManufacture = $('#yearOfManufacture');
-    yearOfManufacture.val("date:" + yearOfManufacture.val());
+    yearOfManufacture.val("yearOfProduction:" + yearOfManufacture.val());
     var carDistanceTraveled = $('#carDistanceTraveled');
-    carDistanceTraveled.val("distance_traveled:" + carDistanceTraveled.val());
+    carDistanceTraveled.val("distanceTraveled:" + carDistanceTraveled.val());
     var carColor = $('#carColor');
     carColor.val("color:" + carColor.val());
     var carPrice = $('#carPrice');

@@ -86,11 +86,10 @@ public final class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", telephoneNumber='" + telephoneNumber + '\'' +
-                ", profession=" + profession +
-                '}';
+        return firstName + " "
+                + lastName + " "
+                + telephoneNumber + ", "
+                + profession.getName() + ", "
+                + profession.getSalary();
     }
 }

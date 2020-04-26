@@ -21,7 +21,7 @@ public final class Address {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @Pattern(regexp = "^[A-Z][a-z]+(?:[\\s-][a-zA-Z]+)*(\\d*)$", message = "{address.street.invalid.regexp}")
+    @Pattern(regexp = "^[A-Z][a-z]+(?:[\\s-][a-zA-Z]+)(\\s\\d*)?$", message = "{address.street.invalid.regexp}")
     @Size(max = 25, min = 3, message = "{address.street.invalid.size}")
     @Column(name = "street", nullable = false)
     private String street;

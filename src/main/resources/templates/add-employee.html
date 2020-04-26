@@ -56,6 +56,9 @@
                 <option value="Manager" th:value="Manager">Manager</option>
                 <option value="Something" th:value="Something">Something</option>
             </select>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('profession.name')}"
+                 th:errors="*{profession.name}">
+            </div>
         </div>
         <div class="col">
             <select th:field="*{profession.salary}" class="custom-select custom-select-sm">
@@ -64,6 +67,9 @@
                 <option value="1500" th:value="1500">1500</option>
                 <option value="2000" th:value="2000">2000</option>
             </select>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('profession.salary')}">
+                Invalid number!
+            </div>
         </div>
     </div>
 

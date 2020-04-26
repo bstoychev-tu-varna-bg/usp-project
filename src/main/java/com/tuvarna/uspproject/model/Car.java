@@ -32,6 +32,7 @@ public final class Car {
     @Column(name = "price", nullable = false)
     private Double price;
 
+    @Pattern(regexp = "^[a-z]{3,}$", message = "{car.color.invalid.regexp}")
     @NotBlank(message = "{car.color.invalid.notBlank}")
     @Column(name = "color", nullable = false)
     private String color;
@@ -98,11 +99,10 @@ public final class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "yearOfProduction=" + yearOfProduction +
-                ", price=" + price +
-                ", color='" + color + '\'' +
-                ", model=" + model +
-                '}';
+        return model.getBrand().getName() + " "
+                + model.getName() + ", "
+                + yearOfProduction + ", "
+                + color + ", "
+                + price;
     }
 }
