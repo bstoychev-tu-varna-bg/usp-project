@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add client</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Navigation-->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div th:if="${cars.isEmpty()}">
+    <div class="alert alert-warning" role="alert">You should create a car first!!</div>
+</div>
+<div th:if="${employees.isEmpty()}">
+    <div class="alert alert-warning" role="alert">You should create an employee first!!</div>
+</div>
+<!-- Form add employee -->
+<form class="text-center border border-light p-5" th:action="@{/sales/add}" th:object="${sale}" method="post"
+      th:if="${!cars.isEmpty() && !employees.isEmpty()}">
+
+    <p class="h4 mb-4">Add sale</p>
+
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- First name -->
+            <input type="text" id="firstName" class="form-control" placeholder="First name"
+                   th:field="*{client.firstName}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('client.firstName')}"
+                 th:errors="*{client.firstName}"></div>
+        </div>
+        <div class="col">
+            <!-- Last name -->
+            <input type="text" id="lastName" class="form-control" placeholder="Last name"
+                   th:field="*{client.lastName}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('client.lastName')}"
+                 th:errors="*{client.lastName}"></div>
+        </div>
+    </div>
+
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- City -->
+            <input type="text" id="city" class="form-control" placeholder="City"
+                   th:field="*{client.address.city}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('client.address.city')}"
+                 th:errors="*{client.address.city}"></div>
+        </div>
+        <div class="col">
+            <!-- Street -->
+            <input type="text" id="street" class="form-control" placeholder="Street"
+                   th:field="*{client.address.street}">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('client.address.street')}"
+                 th:errors="*{client.address.street}"></div>
+        </div>
+    </div>
+
+    <!-- Telephone number -->
+    <input type="text" id="telephoneNumber" class="form-control mb-4" placeholder="Telephone number"
+           th:field="*{client.telephoneNumber}">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('client.telephoneNumber')}"
+         th:errors="*{client.telephoneNumber}"></div>
+
+    <!-- Telephone number -->
+    <div class="form-row mb-4">
+        <div class="col">
+            <select th:field="*{car}" class="custom-select custom-select-sm">
+                <th:block th:each="car : ${cars}">
+                    <option value="Something" th:value="${car.id}" th:text="${car.toString()}"></option>
+                </th:block>
+            </select>
+        </div>
+        <div class="col">
+            <select th:field="*{employee}" class="custom-select custom-select-sm">
+                <th:block th:each="employee : ${employees}">
+                    <option value="Something" th:value="${employee.id}" th:text="${employee.toString()}">Something
+                    </option>
+                </th:block>
+            </select>
+        </div>
+    </div>
+    <!-- Add button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Add</button>
+</form>
+<!-- Form add employee -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+
+</body>
+</html>
